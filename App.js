@@ -5,9 +5,9 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Text style={styles.text}>1one1</Text>
-        <Text style={styles.text}>1two</Text>
-        <Text style={styles.text}>1Three</Text>
+        <Text style={styles.text}>one</Text>
+        <Text style={styles.text}>two</Text>
+        <Text style={styles.text}>Three</Text>
       </View>
     </View>
   )
