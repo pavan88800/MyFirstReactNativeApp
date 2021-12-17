@@ -1,34 +1,48 @@
-import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import React, {useState} from 'react'
+import {Text, StyleSheet, View, TouchableOpacity, StatusBar} from 'react-native'
 
 const App = () => {
+  const [randomColor, setRandomColor] = useState('rgb(32, 0, 126)')
+  const [reset, setResetColor] = useState('')
+  const changeBg = () => {
+    const red = Math.floor(Math.random() * 350)
+    const green = Math.floor(Math.random() * 350)
+    const blue = Math.floor(Math.random() * 350)
+    setRandomColor(`rgb(${red}, ${green}, ${blue})`)
+  }
+  const resetBg = () => {
+    setRandomColor('rgb(0, 0, 0)')
+  }
   return (
-    <View style={styles.container}>
-      <View style={styles.row}>
-        <Text style={styles.text}>1one1</Text>
-        <Text style={styles.text}>1two</Text>
-        <Text style={styles.text}>1Three</Text>
+    <>
+      <StatusBar backgroundColor={randomColor} />
+      <View style={[styles.container, {backgroundColor: randomColor}]}>
+        <TouchableOpacity onPress={changeBg}>
+          <Text style={styles.text}>Tap me</Text>
+        </TouchableOpacity>
+        <Text>{'\n'}</Text>
+        <TouchableOpacity onPress={resetBg}>
+          <Text style={styles.text}>Reset</Text>
+        </TouchableOpacity>
       </View>
-    </View>
+    </>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
-    textAlign: 'center',
-    fontSize: 20,
-    backgroundColor: '#000',
-    color: '#fff',
-    padding: 20,
-    width: 200,
+    fontSize: 30,
+    backgroundColor: '#BB2CD9',
+    paddingHorizontal: 40,
+    paddingVertical: 10,
+    color: '#ffffff',
+    borderRadius: 10,
+    textTransform: 'uppercase',
   },
 })
 
